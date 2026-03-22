@@ -13,8 +13,18 @@ class Event(Base):
 
     event_id = Column(BigInteger, primary_key=True)
     event_time = Column(DateTime)
-    event_type = Column(SQLEnum(EventType))
+    
+    # SỬA LẠI DÒNG NÀY:
+    # 1. values_callable: Ép SQLAlchemy dùng giá trị chữ thường
+    # 2. name="action_type": (Tùy chọn nhưng khuyên dùng) Match đúng với tên kiểu ENUM trong PostgreSQL của bạn
+    event_type = Column(
+        SQLEnum(
+            EventType, 
+            name="action_type", 
+            values_callable=lambda obj: [e.value for e in obj]
+        )
+    )
+    
     product_id = Column(BigInteger)
     user_id = Column(BigInteger)
     user_session = Column(String)
-
