@@ -10,6 +10,8 @@ class ProductOut(BaseModel):
     image_url: str
     category_id: int
     description: str
+    category_code: Optional[str] = Field(default=None, alias='category_code')
+    confidence_score: float = Field(default=0.0, description="Độ tin cậy của khuyến nghị (0.0-1.0)")
 
     model_config = ConfigDict(from_attributes=True, populate_by_name=True)
 

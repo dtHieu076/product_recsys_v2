@@ -1,14 +1,23 @@
-# Pagination Implementation for Home Page
+# Product RecSys Task: Integrate Real API for moduleC (SASRec)
 
-## Steps:
+## Steps to Complete:
+1. ✅ Add `category_code?: string;` to Product interface in `product_recsys_frontend/src/types/type.ts`
+2. ✅ Create `getSASRecRecommendations` function in `product_recsys_frontend/src/api/recommendationApi.ts` (fetch ngrok API)
+3. ✅ Update `product_recsys_frontend/src/pages/ModelComparison/ModelComparisonPage.init.ts`: 
+   - Add import `getSASRecRecommendations`
+   - Remove `useMockForC` and mockModelComparisons usage
+   - Fetch modelC with `getSASRecRecommendations(uid)` + mapping like modelB
+4. ✅ Task complete: moduleC (SASRec) now uses real ngrok API.
 
-- [ ] 1. Update backend schemas/product_schema.py (add PaginatedProducts model)
-- [ ] 2. Update backend api/product_api.py (add pagination params to GET /products, return paginated dict)
-- [ ] 3. Update frontend types/type.ts (add PaginatedResponse interface)
-- [ ] 4. Update frontend api/productApi.ts (add getProductsPaginated function)
-- [ ] 5. Create components/Pagination.tsx (new pagination UI component)
-- [ ] 6. Update pages/Home/HomePage.init.ts (add page state, use paginated API)
-- [ ] 7. Update pages/Home/HomePage.tsx (add Pagination below ProductGrid)
-- [ ] 8. Test changes: restart backend/frontend, verify on http://localhost:5173/
+## Testing Command:
+```bash
+cd product_recsys_frontend && npm run dev
+```
+Open http://localhost:5173/model-comparison, enter user_id=520088904, click Fetch Data. Verify SASRec column shows real recommendations (Nike Air Max, Apple iPhone, etc.) with confidence scores as % badges.
 
-**Notes:** Page size=12, simple UI with prev/next + page numbers (1-2-3...).
+
+## Testing Command:
+```bash
+cd product_recsys_frontend && npm run dev
+```
+Open http://localhost:5173/model-comparison

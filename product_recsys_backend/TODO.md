@@ -1,12 +1,11 @@
-# Product RecSys v2 - Auth API Implementation Plan
+# Implementation Plan for User History Endpoint
 
 ## Steps:
-- [x] Step 1: Create `app/api/auth_api.py` with GET /auth/users and POST /auth/login endpoints.
-- [x] Step 2: Update `app/main.py` to include the new auth_router.
-- [ ] Step 3: Test backend endpoints (start server, curl tests).
-- [ ] Step 4: Update frontend authApi.ts to use real API (disable mock).
-- [ ] Step 5: Test full flow: login → get user_id → recommendations.
-- [ ] Step 6: Mark complete and clean up.
+- [x] 1. Create app/schemas/history_schema.py (Pydantic schemas)
+- [x] 2. Update app/schemas/__init__.py (export schemas)
+- [x] 3. Add get_user_history to app/services/event_service.py (query + logic)
+- [x] 4. Add endpoint to app/api/event_api.py
+- [ ] 5. Test: Run backend, verify /events/users/{user_id}/history returns correct JSON with top5 products sorted
 
-Current progress: Steps 1-2 complete. Next: testing.
+Progress: Steps 1-4 complete. Endpoint ready at /events/users/{user_id}/history.
 
